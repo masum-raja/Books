@@ -43,12 +43,14 @@ bookRouter.patch("/update/:uuid", countApiCalls, async (req, res) => {
   const ID = req.params.uuid;
   try {
     const book = await BookModel.findOne({ uuid: ID });
+
     if (book) {
       await BookModel.findByIdAndUpdate(book._id, req.body);
       res.send({ message: "BookList updated successfully" });
     } else {
       res.status(404).send({ message: "Book not found" });
     }
+    
   } catch (err) {
     console.log(err);
     res.send({ message: "Something went wrong", error: err });

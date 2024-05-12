@@ -17,13 +17,10 @@ const app = express();
 app.use(express.static("public"));
 
 app.use(express.json());
-
 app.use(cookieParser());
-
 app.use(cors(corsOptions));
 
 app.use("/", rootRoutes);
-
 app.use("/book", bookRoutes);
 app.use('/count', bookRouters);
 
